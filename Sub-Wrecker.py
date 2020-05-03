@@ -7,7 +7,9 @@ import xml.etree.ElementTree as ET
 from IDENTIFIERS import IDENTIFIERS
 from TAGS import TAGS
 
-parser = argparse.ArgumentParser(description="Wreck all possible things that can be wrecked on a submarine in Barotrauma.")
+parser = argparse.ArgumentParser(
+    description="Wreck all possible things that can be wrecked on a submarine in Barotrauma."
+)
 parser.add_argument("files", nargs="+", type=str, help="The files to be converted.")
 parser.add_argument("-i", "--inplace", action="store_true")
 
@@ -19,7 +21,7 @@ if __name__ == "__main__":
             # Ignore non-files
             print(f"Cannot find {file}, skipping.")
             continue
-        
+
         splitext = path.splitext(file)
         filename = splitext[0]
         extension = splitext[-1].lower()
@@ -33,7 +35,7 @@ if __name__ == "__main__":
         else:
             print(f"File {file} has unsupported file extension, skipping.")
             continue
-        
+
         # Run the conversions
         print(f"Wrecking {file}...")
         tree = ET.fromstring(sub_xml)
@@ -42,22 +44,22 @@ if __name__ == "__main__":
             if value in IDENTIFIERS:
                 # print(f"Wrecking {value} ==> {IDENTIFIERS[value]}")
                 node.attrib["identifier"] = IDENTIFIERS[value]
-            
+
             value = node.attrib.get("tags")
             if value:
                 for tag, wrecktag in TAGS.items():
                     value = value.replace(tag, wrecktag)
                 node.attrib["tags"] = value
-                    
+
         # Convert back to a string for writing to file
         wrecked_xml = ET.tostring(tree)
-        
+
         # If not inplace, make a " - Wrecked" suffix
         if not args.inplace:
             out_file = f"{filename} - Wrecked{extension}"
         else:
             out_file = file
-        
+
         print(f"Saving to {out_file}...")
         # Save the submarine to the file we decided on
         if extension == ".sub":
