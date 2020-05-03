@@ -400,4 +400,4 @@ IDENTIFIERS = {
 	"weaponholder": "weaponholderwrecked",
 	"windoweddoorwbuttons": "windoweddoorwbuttonswrecked",
 	"windoweddoor": "windoweddoorwrecked",
-}
+}    "loosevent": "ventwrecked",
