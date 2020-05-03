@@ -3,5 +3,6 @@ TAGS = {
     "medcab": "wreckmedcab",
     "reactorcab": "wreckreactorcab",
     "secarmcab": "wrecksecarmcab",
+    "securearmcab": "wrecksecurearmcab",
     "storagecab": "wreckstoragecab",
 }
