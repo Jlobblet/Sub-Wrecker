@@ -49,7 +49,7 @@ if __name__ == "__main__":
             value = node.attrib.get("tags")
             if value and [value for sub in TAGS.keys() if sub in value] != list():
                 for tag, wrecktag in TAGS.items():
-                    regex = re.compile(f'(?:(?<=[,"])|^){tag}(?:(?=[,"])|$)')
+                    regex = re.compile(f'(?:(?<=,)|^){tag}(?:(?=,)|$)')
                     value = regex.sub(wrecktag, value)
                 node.attrib["tags"] = value
 
