@@ -52,6 +52,13 @@ if __name__ == "__main__":
                     regex = re.compile(f'(?:(?<=,)|^){tag}(?:(?=,)|$)')
                     value = regex.sub(wrecktag, value)
                 node.attrib["tags"] = value
+                
+            if node.tag.lower() == "requireditem":
+                value = node.attrib.get("items")
+                if value:
+                    regex = re.compile(r'(?:(?<=,)|^)id\w+(?:(?=,)|$)')
+                    value = regex.sub("wreck_id", value)
+                    node.attrib["items"] = value
 
         # Convert back to a string for writing to file
         wrecked_xml = ET.tostring(tree)
