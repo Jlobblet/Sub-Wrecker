@@ -58,7 +58,7 @@ if __name__ == "__main__":
 
         # If not inplace, make a " - Wrecked" suffix
         if not args.inplace:
-            out_file = f"{filename} - Wrecked{extension}"
+            out_file = f"{filename}_Wrecked{extension}"
         else:
             out_file = file
 
