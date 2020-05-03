@@ -2,6 +2,7 @@
 import argparse
 import gzip
 from os import path
+import re
 import xml.etree.ElementTree as ET
 
 from IDENTIFIERS import IDENTIFIERS
@@ -46,9 +47,10 @@ if __name__ == "__main__":
                 node.attrib["identifier"] = IDENTIFIERS[value]
 
             value = node.attrib.get("tags")
-            if value:
+            if value and [value for sub in TAGS.keys() if sub in value] != list():
                 for tag, wrecktag in TAGS.items():
-                    value = value.replace(tag, wrecktag)
+                    regex = re.compile(f'(?:(?<=[,"])|^){tag}(?:(?=[,"])|$)')
+                    value = regex.sub(wrecktag, value)
                 node.attrib["tags"] = value
 
         # Convert back to a string for writing to file
