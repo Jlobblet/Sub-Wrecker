@@ -5,6 +5,7 @@ from os import path
 import xml.etree.ElementTree as ET
 
 from IDENTIFIERS import IDENTIFIERS
+from TAGS import TAGS
 
 parser = argparse.ArgumentParser(description="Wreck all possible things that can be wrecked on a submarine in Barotrauma.")
 parser.add_argument("files", nargs="+", type=str, help="The files to be converted.")
@@ -41,6 +42,13 @@ if __name__ == "__main__":
             if value in IDENTIFIERS:
                 # print(f"Wrecking {value} ==> {IDENTIFIERS[value]}")
                 node.attrib["identifier"] = IDENTIFIERS[value]
+            
+            value = node.attrib.get("tags")
+            if value:
+                for tag, wrecktag in TAGS.items():
+                    value = value.replace(tag, wrecktag)
+                node.attrib["tags"] = value
+                    
         # Convert back to a string for writing to file
         wrecked_xml = ET.tostring(tree)
         
