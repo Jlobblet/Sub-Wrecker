@@ -41,7 +41,7 @@ if __name__ == "__main__":
         print(f"Wrecking {file}...")
         tree = ET.fromstring(sub_xml)
         for node in tree.iter():
-            value = str(node.attrib.get("identifier", ""))
+            value = str(node.attrib.get("identifier", "")).lower()
             if value in IDENTIFIERS:
                 # print(f"Wrecking {value} ==> {IDENTIFIERS[value]}")
                 node.attrib["identifier"] = IDENTIFIERS[value]
