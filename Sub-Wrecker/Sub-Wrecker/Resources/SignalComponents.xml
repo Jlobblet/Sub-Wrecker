@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+	<abscomponent/>
+	<acoscomponent/>
+	<addercomponent/>
+	<andcomponent/>
+	<asincomponent/>
+	<atancomponent/>
+	<ceilcomponent/>
+	<colorcomponent/>
+	<coscomponent/>
+	<delaycomponent/>
+	<dividecomponent/>
+	<equalscomponent/>
+	<factorialcomponent/>
+	<floorcomponent/>
+	<greatercomponent/>
+	<memorycomponent/>
+	<modulocomponent/>
+	<multiplycomponent/>
+	<notcomponent/>
+	<orcomponent/>
+	<powcomponent/>
+	<regexcomponent/>
+	<relaycomponent/>
+	<roundcomponent/>
+	<signalcheckcomponent/>
+	<sincomponent/>
+	<squarerootcomponent/>
+	<subtractcomponent/>
+	<tancomponent/>
+	<wificomponent/>
+	<xorcomponent/>
+</root>

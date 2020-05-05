@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+	<armcab>wreckarmcab</armcab>
+	<coilgun>wreckcoilgun</coilgun>
+	<medcab>wreckmedcab</medcab>
+	<railgun>wreckrailgun</railgun>
+	<reactorcab>wreckreactorcab</reactorcab>
+	<secarmcab>wrecksecarmcab</secarmcab>
+	<storagecab>wreckstoragecab</storagecab>
+</root>
