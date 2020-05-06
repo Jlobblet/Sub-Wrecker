@@ -1,5 +1,7 @@
 # Sub-Wrecker
 Convert Barotrauma submarines to wrecks. 
+## Prerequisutes
+Microsoft .NET Framework 4.7.2
 ## Installation
 1. Either build the project from source, or download a compressed executable from the latest release. The included .dll files must be within the same directory as the executable.
 ## Usage
