@@ -24,7 +24,7 @@ namespace Sub_Wrecker
             string re;
             if (settings.RenameSub)
             {
-                sub.Root.Attribute("Name").Value += "_Wrecked";
+                sub.Root.Attribute("name").Value += "_Wrecked";
             }    
             foreach (XElement xe in sub.Root.Descendants().Reverse())
             {
