@@ -1,5 +1,7 @@
 # Sub-Wrecker
 Convert Barotrauma submarines to wrecks. 
+## Notice
+Since the C# rewrite version has been released, I do not currently have plans to add new features to this version.
 ## Installation
 ### Prerequisites
 - Python 3.6+
