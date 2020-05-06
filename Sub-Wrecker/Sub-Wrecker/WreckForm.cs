@@ -1,13 +1,8 @@
 ﻿using Microsoft.WindowsAPICodePack.Dialogs;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
 
@@ -15,7 +10,7 @@ namespace Sub_Wrecker
 {
     public partial class WreckForm : Form
     {
-        readonly string DefaultOpenLocation = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86), "Steam", "steamapps", "common", "Barotrauma");
+        private readonly string DefaultOpenLocation = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86), "Steam", "steamapps", "common", "Barotrauma");
         protected IEnumerable<string> SubFilePaths;
         public WreckForm()
         {
@@ -72,7 +67,7 @@ namespace Sub_Wrecker
                 string extension = Path.GetExtension(fileName);
                 if (extension != ".sub")
                 {
-                    Console.WriteLine("File " + fileName + " has an unsupported extension, skipping."); 
+                    Console.WriteLine("File " + fileName + " has an unsupported extension, skipping.");
                     continue;
                 }
                 Console.WriteLine("Loading " + fileName + "...");

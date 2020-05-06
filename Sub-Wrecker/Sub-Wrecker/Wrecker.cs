@@ -1,17 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.Tracing;
 using System.Linq;
-using System.Net.Configuration;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Xml.Linq;
-using System.Xml.Serialization;
 
 namespace Sub_Wrecker
 {
-    class Wrecker
+    internal class Wrecker
     {
         public static XDocument Wreck_Sub(XDocument sub, WreckerSettings settings)
         {
@@ -28,10 +23,10 @@ namespace Sub_Wrecker
             if (settings.RenameSub)
             {
                 sub.Root.Attribute("name").Value += "_Wrecked";
-            }    
+            }
             // Reversed so that deleted parent elements won't cause crashes when it should iterate over their children
             foreach (XElement xe in sub.Root.Descendants().Reverse())
-            { 
+            {
                 if (xe.Attribute("identifier") != null)
                 {
                     // Attempt to wreck an item based on its identifier
@@ -101,7 +96,7 @@ namespace Sub_Wrecker
                     }
 
                 }
-                if  (xe.Attribute("tags") != null)
+                if (xe.Attribute("tags") != null)
                 {
                     string tags = xe.Attribute("tags").Value;
                     // Adjust tags on containers
@@ -117,7 +112,7 @@ namespace Sub_Wrecker
                             }
                         }
                         xe.SetAttributeValue("tags", tags);
-                    } 
+                    }
 
                 }
                 if (xe.Name.ToString().ToLower() == "waypoint")
