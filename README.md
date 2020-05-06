@@ -1,28 +1,29 @@
 # Sub-Wrecker
 Convert Barotrauma submarines to wrecks. 
 ## Installation
-### Prerequisites
-- Python 3.6+
-### Instructions
-1. Download the files from either the latest release and extracting, or by cloning the repo.
+1. Either build the project from source, or download a compressed executable from the latest release. The included .dll files must be within the same directory as the executable.
 ## Usage
-Sub-Wrecker is run from the command line. Simply run `python Sub-Wrecker.py -h` to see the following message:  
-```
-usage: Sub-Wrecker.py [-h] [-i] files [files ...]
-
-Wreck all possible things that can be wrecked on a submarine in Barotrauma.
-
-positional arguments:
-  files          The files to be converted.
-
-optional arguments:
-  -h, --help     show this help message and exit
-  -i, --inplace
-```
-It can take any number of files as input and will attempt to wreck all of them.  
-Some examples:  
-- Wreck a single .sub `python Sub-Wrecker.py Dugong.sub`
-- Wreck a single .sub, inplace `python Sub-Wrecker.py -i Dugong.sub`
-- Wreck a single .xml `python Sub-Wrecker.py Dugong.xml`
-- Wreck two .subs `python Sub-Wrecker.py Dugong.sub Orca.sub`
-- Wreck two .subs, inplace `python Sub-Wrecker.py -i Dugong.sub Orca.sub`
+Run `Sub-Wrecker.exe`.
+### Browse
+Select one or more `.sub` files to wreck.
+### Wreck
+Clicking this button will wreck the selected files in accordance with the settings below.
+#### Rename sub
+Append `_Wrecked` to the name of the submarine
+#### Preserve sprite colours
+If unchecked, will reset all sprite colours of wrecked objects to `255,255,255,255`.
+#### Change container tags to wrecked versions
+Replaces the tags on containers with wrecked versions, e.g. `medcab` becomes `wreckmedcab`.
+#### Delete wires
+If checked, deletes all wires on the submarine.
+#### Delete components
+If checked, deletes all wiring components on the submarine.
+#### Door behaviour dropdown
+##### Replace door and hatch ids with wreck_id
+On all doors and hatches in the submarine, make them accessible with `wreck_id` as a `requireditem`.
+##### Set canbepicked to False
+On all doors and hatches in the submarine, set the value of `canbepicked` to `False`. This has the effect of not allowing any id card to open them.
+##### Leave hatches and doors alone
+Do nothing to hatches and doors.
+#### Wreck file inplace
+Instead of outputting to a new file, output to the same file as used for input.
