@@ -79,13 +79,14 @@ namespace Sub_Wrecker
                 XDocument sub = SaveUtils.LoadSub(fileName);
                 Console.WriteLine("...loaded.");
                 WreckerSettings settings = new WreckerSettings(
-                    ContainerTagsCheckBox.Checked,
-                    DeleteComponentsCheckBox.Checked,
-                    DeleteWiresCheckBox.Checked,
-                    doorBehaviourComboBox.SelectedIndex,
-                    InplaceCheckBox.Checked,
-                    PreserveColourCheckBox.Checked,
-                    RenameCheckBox.Checked);
+                    containerTags: ContainerTagsCheckBox.Checked,
+                    deleteComponents: DeleteComponentsCheckBox.Checked,
+                    deleteSpawnpoints: DeleteSpawnpointsCheckBox.Checked,
+                    deleteWires: DeleteWiresCheckBox.Checked,
+                    doorBehaviour: doorBehaviourComboBox.SelectedIndex,
+                    inplace: InplaceCheckBox.Checked,
+                    preserveColour: PreserveColourCheckBox.Checked,
+                    renameSub: RenameCheckBox.Checked);
                 XDocument wreckedSub = Wrecker.Wreck_Sub(sub, settings);
                 string outFileName;
                 if (InplaceCheckBox.Checked)
@@ -108,6 +109,11 @@ namespace Sub_Wrecker
         }
 
         private void WreckForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DeleteSpawnpointsCheckBox_CheckedChanged(object sender, EventArgs e)
         {
 
         }

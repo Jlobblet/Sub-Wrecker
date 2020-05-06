@@ -18,6 +18,7 @@ namespace Sub_Wrecker
             // Set some values to 0 for statistics when finished.
             int wreckedItems = 0;
             int deletedComponents = 0;
+            int deletedSpawnpoints = 0;
             int deletedWires = 0;
             int adjustedDoors = 0;
             int adjustedContainerTags = 0;
@@ -119,6 +120,17 @@ namespace Sub_Wrecker
                     } 
 
                 }
+                if (xe.Name.ToString().ToLower() == "waypoint")
+                {
+                    if (xe.Attribute("spawn") != null)
+                    {
+                        if (xe.Attribute("spawn").Value.ToString().ToLower() != "path")
+                        {
+                            deletedSpawnpoints++;
+                            xe.Remove();
+                        }
+                    }
+                }
             }
             // Print out statistics
             Console.WriteLine("Wrecked " + wreckedItems.ToString() + " items.");
@@ -126,6 +138,7 @@ namespace Sub_Wrecker
             if (settings.DeleteWires) { Console.WriteLine("Deleted " + deletedWires.ToString() + " wires."); }
             if (settings.DoorBehaviour == 1 || settings.DoorBehaviour == 2) { Console.WriteLine("Adjusted " + adjustedDoors.ToString() + " doors."); }
             if (settings.ContainerTags) { Console.WriteLine("Adjusted " + adjustedContainerTags.ToString() + " tags on containers."); }
+            if (settings.DeleteSpawnpoints) { Console.WriteLine("Deleted " + deletedSpawnpoints.ToString() + " spawnpoints."); }
             Console.WriteLine("...wrecked.");
             return sub;
         }
