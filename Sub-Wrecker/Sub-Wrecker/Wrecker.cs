@@ -13,7 +13,7 @@ namespace Sub_Wrecker
             // Set some values to 0 for statistics when finished.
             int wreckedItems = 0;
             int deletedComponents = 0;
-            int deletedSpawnpoints = 0;
+            int adjustedSpawnpoints = 0;
             int deletedWires = 0;
             int adjustedDoors = 0;
             int adjustedContainerTags = 0;
@@ -121,8 +121,24 @@ namespace Sub_Wrecker
                     {
                         if (xe.Attribute("spawn").Value.ToString().ToLower() != "path")
                         {
-                            deletedSpawnpoints++;
-                            xe.Remove();
+                            switch (settings.SpawnpointBehaviour)
+                            {
+                                // Delete spawnpoints
+                                case 0:
+                                    adjustedSpawnpoints++;
+                                    xe.Remove();
+                                    break;
+                                // Turn into corpse spawnpoint
+                                case 1:
+                                    adjustedSpawnpoints++;
+                                    xe.SetAttributeValue("spawn", "corpse");
+                                    break;
+                                // Leave it alone
+                                case 2:
+                                    break;
+                                default:
+                                    break;
+                            }
                         }
                     }
                 }
@@ -133,7 +149,15 @@ namespace Sub_Wrecker
             if (settings.DeleteWires) { Console.WriteLine("Deleted " + deletedWires.ToString() + " wires."); }
             if (settings.DoorBehaviour == 1 || settings.DoorBehaviour == 2) { Console.WriteLine("Adjusted " + adjustedDoors.ToString() + " doors."); }
             if (settings.ContainerTags) { Console.WriteLine("Adjusted " + adjustedContainerTags.ToString() + " tags on containers."); }
-            if (settings.DeleteSpawnpoints) { Console.WriteLine("Deleted " + deletedSpawnpoints.ToString() + " spawnpoints."); }
+            switch (settings.SpawnpointBehaviour)
+            {
+                case 0:
+                    Console.WriteLine("Deleted " + adjustedSpawnpoints.ToString() + " spawnpoints.");
+                    break;
+                case 1:
+                    Console.WriteLine("Turned " + adjustedSpawnpoints.ToString() + " spawnpoints into corpse spawnpoints.");
+                    break;
+            }    
             Console.WriteLine("...wrecked.");
             return sub;
         }

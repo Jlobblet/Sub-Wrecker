@@ -76,12 +76,12 @@ namespace Sub_Wrecker
                 WreckerSettings settings = new WreckerSettings(
                     containerTags: ContainerTagsCheckBox.Checked,
                     deleteComponents: DeleteComponentsCheckBox.Checked,
-                    deleteSpawnpoints: DeleteSpawnpointsCheckBox.Checked,
                     deleteWires: DeleteWiresCheckBox.Checked,
-                    doorBehaviour: doorBehaviourComboBox.SelectedIndex,
+                    doorBehaviour: DoorBehaviourComboBox.SelectedIndex,
                     inplace: InplaceCheckBox.Checked,
                     preserveColour: PreserveColourCheckBox.Checked,
-                    renameSub: RenameCheckBox.Checked);
+                    renameSub: RenameCheckBox.Checked,
+                    spawnpointBehaviour: SpawnpointComboBox.SelectedIndex);
                 XDocument wreckedSub = Wrecker.Wreck_Sub(sub, settings);
                 string outFileName;
                 if (InplaceCheckBox.Checked)
@@ -105,10 +105,16 @@ namespace Sub_Wrecker
 
         private void WreckForm_Load(object sender, EventArgs e)
         {
-
+            DoorBehaviourComboBox.SelectedIndex = 0;
+            SpawnpointComboBox.SelectedIndex = 0;
         }
 
         private void DeleteSpawnpointsCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SpawnpointComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

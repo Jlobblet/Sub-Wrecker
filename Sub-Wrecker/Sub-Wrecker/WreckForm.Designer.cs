@@ -38,9 +38,9 @@
             this.InplaceCheckBox = new System.Windows.Forms.CheckBox();
             this.DeleteWiresCheckBox = new System.Windows.Forms.CheckBox();
             this.DeleteComponentsCheckBox = new System.Windows.Forms.CheckBox();
-            this.doorBehaviourComboBox = new System.Windows.Forms.ComboBox();
+            this.DoorBehaviourComboBox = new System.Windows.Forms.ComboBox();
             this.RenameCheckBox = new System.Windows.Forms.CheckBox();
-            this.DeleteSpawnpointsCheckBox = new System.Windows.Forms.CheckBox();
+            this.SpawnpointComboBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // BrowseButton
@@ -120,7 +120,7 @@
             // 
             this.InplaceCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.InplaceCheckBox.AutoSize = true;
-            this.InplaceCheckBox.Location = new System.Drawing.Point(536, 277);
+            this.InplaceCheckBox.Location = new System.Drawing.Point(535, 281);
             this.InplaceCheckBox.Margin = new System.Windows.Forms.Padding(5);
             this.InplaceCheckBox.Name = "InplaceCheckBox";
             this.InplaceCheckBox.Size = new System.Drawing.Size(141, 21);
@@ -133,7 +133,7 @@
             // 
             this.DeleteWiresCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.DeleteWiresCheckBox.AutoSize = true;
-            this.DeleteWiresCheckBox.Location = new System.Drawing.Point(535, 181);
+            this.DeleteWiresCheckBox.Location = new System.Drawing.Point(535, 151);
             this.DeleteWiresCheckBox.Margin = new System.Windows.Forms.Padding(5);
             this.DeleteWiresCheckBox.Name = "DeleteWiresCheckBox";
             this.DeleteWiresCheckBox.Size = new System.Drawing.Size(107, 21);
@@ -146,7 +146,7 @@
             // 
             this.DeleteComponentsCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.DeleteComponentsCheckBox.AutoSize = true;
-            this.DeleteComponentsCheckBox.Location = new System.Drawing.Point(535, 212);
+            this.DeleteComponentsCheckBox.Location = new System.Drawing.Point(535, 182);
             this.DeleteComponentsCheckBox.Margin = new System.Windows.Forms.Padding(5);
             this.DeleteComponentsCheckBox.Name = "DeleteComponentsCheckBox";
             this.DeleteComponentsCheckBox.Size = new System.Drawing.Size(152, 21);
@@ -155,21 +155,21 @@
             this.DeleteComponentsCheckBox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.DeleteComponentsCheckBox.UseVisualStyleBackColor = true;
             // 
-            // doorBehaviourComboBox
+            // DoorBehaviourComboBox
             // 
-            this.doorBehaviourComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.doorBehaviourComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.doorBehaviourComboBox.FormattingEnabled = true;
-            this.doorBehaviourComboBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.doorBehaviourComboBox.Items.AddRange(new object[] {
+            this.DoorBehaviourComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.DoorBehaviourComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.DoorBehaviourComboBox.FormattingEnabled = true;
+            this.DoorBehaviourComboBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.DoorBehaviourComboBox.Items.AddRange(new object[] {
             "Replace door and hatch ids with wreck_id",
             "Set canbepicked to False",
             "Leave doors and hatches alone"});
-            this.doorBehaviourComboBox.Location = new System.Drawing.Point(530, 243);
-            this.doorBehaviourComboBox.Margin = new System.Windows.Forms.Padding(5);
-            this.doorBehaviourComboBox.Name = "doorBehaviourComboBox";
-            this.doorBehaviourComboBox.Size = new System.Drawing.Size(292, 24);
-            this.doorBehaviourComboBox.TabIndex = 10;
+            this.DoorBehaviourComboBox.Location = new System.Drawing.Point(529, 247);
+            this.DoorBehaviourComboBox.Margin = new System.Windows.Forms.Padding(5);
+            this.DoorBehaviourComboBox.Name = "DoorBehaviourComboBox";
+            this.DoorBehaviourComboBox.Size = new System.Drawing.Size(309, 24);
+            this.DoorBehaviourComboBox.TabIndex = 10;
             // 
             // RenameCheckBox
             // 
@@ -186,26 +186,32 @@
             this.RenameCheckBox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.RenameCheckBox.UseVisualStyleBackColor = true;
             // 
-            // DeleteSpawnpointsCheckBox
+            // SpawnpointComboBox
             // 
-            this.DeleteSpawnpointsCheckBox.AutoSize = true;
-            this.DeleteSpawnpointsCheckBox.Location = new System.Drawing.Point(529, 150);
-            this.DeleteSpawnpointsCheckBox.Margin = new System.Windows.Forms.Padding(5);
-            this.DeleteSpawnpointsCheckBox.Name = "DeleteSpawnpointsCheckBox";
-            this.DeleteSpawnpointsCheckBox.Size = new System.Drawing.Size(153, 21);
-            this.DeleteSpawnpointsCheckBox.TabIndex = 12;
-            this.DeleteSpawnpointsCheckBox.Text = "Delete spawnpoints";
-            this.DeleteSpawnpointsCheckBox.UseVisualStyleBackColor = true;
-            this.DeleteSpawnpointsCheckBox.CheckedChanged += new System.EventHandler(this.DeleteSpawnpointsCheckBox_CheckedChanged);
+            this.SpawnpointComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.SpawnpointComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.SpawnpointComboBox.FormattingEnabled = true;
+            this.SpawnpointComboBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.SpawnpointComboBox.Items.AddRange(new object[] {
+            "Delete spawnpoints",
+            "Replace spawnpoints with corpse spawnpoints",
+            "Leave spawnpoints alone"});
+            this.SpawnpointComboBox.Location = new System.Drawing.Point(529, 213);
+            this.SpawnpointComboBox.Margin = new System.Windows.Forms.Padding(5);
+            this.SpawnpointComboBox.MaxDropDownItems = 3;
+            this.SpawnpointComboBox.Name = "SpawnpointComboBox";
+            this.SpawnpointComboBox.Size = new System.Drawing.Size(309, 24);
+            this.SpawnpointComboBox.TabIndex = 10;
+            this.SpawnpointComboBox.SelectedIndexChanged += new System.EventHandler(this.SpawnpointComboBox_SelectedIndexChanged);
             // 
             // WreckForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(853, 407);
-            this.Controls.Add(this.DeleteSpawnpointsCheckBox);
             this.Controls.Add(this.RenameCheckBox);
-            this.Controls.Add(this.doorBehaviourComboBox);
+            this.Controls.Add(this.SpawnpointComboBox);
+            this.Controls.Add(this.DoorBehaviourComboBox);
             this.Controls.Add(this.DeleteComponentsCheckBox);
             this.Controls.Add(this.DeleteWiresCheckBox);
             this.Controls.Add(this.InplaceCheckBox);
@@ -236,9 +242,9 @@
         private System.Windows.Forms.CheckBox InplaceCheckBox;
         private System.Windows.Forms.CheckBox DeleteWiresCheckBox;
         private System.Windows.Forms.CheckBox DeleteComponentsCheckBox;
-        private System.Windows.Forms.ComboBox doorBehaviourComboBox;
+        private System.Windows.Forms.ComboBox DoorBehaviourComboBox;
         private System.Windows.Forms.CheckBox RenameCheckBox;
-        private System.Windows.Forms.CheckBox DeleteSpawnpointsCheckBox;
+        private System.Windows.Forms.ComboBox SpawnpointComboBox;
     }
 }
 
