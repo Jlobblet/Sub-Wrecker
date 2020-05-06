@@ -74,8 +74,10 @@ namespace Sub_Wrecker
                 {
                     Console.WriteLine("File " + fileName + " has an unsupported extension, skipping."); 
                     continue;
-                }    
+                }
+                Console.WriteLine("Loading " + fileName + "...");
                 XDocument sub = SaveUtils.LoadSub(fileName);
+                Console.WriteLine("...loaded.");
                 WreckerSettings settings = new WreckerSettings(
                     ContainerTagsCheckBox.Checked,
                     DeleteComponentsCheckBox.Checked,
@@ -94,7 +96,9 @@ namespace Sub_Wrecker
                 {
                     outFileName = Path.Combine(Path.GetDirectoryName(fileName), Path.GetFileNameWithoutExtension(fileName) + "_Wrecked.sub");
                 }
+                Console.WriteLine("Saving to " + outFileName + "...");
                 SaveUtils.SaveSub(wreckedSub, outFileName);
+                Console.WriteLine("...saved.");
             }
         }
 
