@@ -27,10 +27,10 @@ namespace Sub_Wrecker
             // Reversed so that deleted parent elements won't cause crashes when it should iterate over their children
             foreach (XElement xe in sub.Root.Descendants().Reverse())
             {
-                if (xe.Attribute("identifier") != null)
+                identifier = xe.Attribute("identifier") != null ? xe.Attribute("identifier").Value : string.Empty;
+                if (identifier != string.Empty)
                 {
                     // Attempt to wreck an item based on its identifier
-                    identifier = xe.Attribute("identifier").Value;
                     if (Data.Identifiers.ContainsKey(identifier))
                     {
                         // Wreck it
@@ -96,23 +96,20 @@ namespace Sub_Wrecker
                     }
 
                 }
-                if (xe.Attribute("tags") != null)
+                tags = xe.Attribute("tags") != null && settings.ContainerTags ? xe.Attribute("tags").Value : string.Empty;
+                if (tags != string.Empty)
                 {
-                    string tags = xe.Attribute("tags").Value;
                     // Adjust tags on containers
-                    if (settings.ContainerTags)
+                    foreach (KeyValuePair<string, string> kv in Data.ContainerTags)
                     {
-                        foreach (KeyValuePair<string, string> kv in Data.ContainerTags)
+                        re = @"(?:(?<=,)|^)" + kv.Key + @"(?:(?=,)|$)";
+                        if (Regex.IsMatch(tags, re))
                         {
-                            re = @"(?:(?<=,)|^)" + kv.Key + @"(?:(?=,)|$)";
-                            if (Regex.IsMatch(tags, re))
-                            {
-                                adjustedContainerTags++;
-                                tags = Regex.Replace(tags, re, kv.Value, RegexOptions.IgnoreCase);
-                            }
+                            adjustedContainerTags++;
+                            tags = Regex.Replace(tags, re, kv.Value, RegexOptions.IgnoreCase);
                         }
-                        xe.SetAttributeValue("tags", tags);
                     }
+                    xe.SetAttributeValue("tags", tags);
 
                 }
                 if (xe.Name.ToString().ToLower() == "waypoint")
