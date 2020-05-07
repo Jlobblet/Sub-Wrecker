@@ -15,6 +15,16 @@ namespace Sub_Wrecker
         public WreckForm()
         {
             InitializeComponent();
+            ContainerTagsCheckBox.Checked = (bool)Properties.Settings.Default["ContainerTags"];
+            DeleteComponentsCheckBox.Checked = (bool)Properties.Settings.Default["DeleteComponents"];
+            DeleteWiresCheckBox.Checked = (bool)Properties.Settings.Default["DeleteWires"];
+            DoorBehaviourComboBox.SelectedIndex = (int)Properties.Settings.Default["DoorBehaviour"];
+            InplaceCheckBox.Checked = (bool)Properties.Settings.Default["Inplace"];
+            LightingShadowsCheckBox.Checked = (bool)Properties.Settings.Default["LightingShadows"];
+            LightingTurnOffCheckBox.Checked = (bool)Properties.Settings.Default["LightingTurnOff"];
+            PreserveColourCheckBox.Checked = (bool)Properties.Settings.Default["PreserveColour"];
+            RenameCheckBox.Checked = (bool)Properties.Settings.Default["RenameSub"];
+            SpawnpointComboBox.SelectedIndex = (int)Properties.Settings.Default["SpawnpointBehaviour"];
             Console.SetOut(new MultiTextWriter(new ControlWriter(OutputBox), Console.Out));
         }
 

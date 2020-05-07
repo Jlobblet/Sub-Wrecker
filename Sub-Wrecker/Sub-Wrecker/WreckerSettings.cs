@@ -48,6 +48,17 @@
             RenameSub = renameSub;
             SpawnpointBehaviour = spawnpointBehaviour;
 
+            Properties.Settings.Default["ContainerTags"] = containerTags;
+            Properties.Settings.Default["DeleteComponents"] = deleteComponents;
+            Properties.Settings.Default["DeleteWires"] = deleteWires;
+            Properties.Settings.Default["DoorBehaviour"] = doorBehaviour;
+            Properties.Settings.Default["Inplace"] = inplace;
+            Properties.Settings.Default["LightingShadows"] = lightingShadows;
+            Properties.Settings.Default["LightingTurnOff"] = lightingTurnOff;
+            Properties.Settings.Default["PreserveColour"] = preserveColour;
+            Properties.Settings.Default["RenameSub"] = renameSub;
+            Properties.Settings.Default["SpawnpointBehaviour"] = spawnpointBehaviour;
+            Properties.Settings.Default.Save();
         }
     }
 }
