@@ -41,6 +41,10 @@
             this.DoorBehaviourComboBox = new System.Windows.Forms.ComboBox();
             this.RenameCheckBox = new System.Windows.Forms.CheckBox();
             this.SpawnpointComboBox = new System.Windows.Forms.ComboBox();
+            this.LightingOptionsGroupBox = new System.Windows.Forms.GroupBox();
+            this.LightingShadowsCheckBox = new System.Windows.Forms.CheckBox();
+            this.LightingTurnOffCheckBox = new System.Windows.Forms.CheckBox();
+            this.LightingOptionsGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // BrowseButton
@@ -61,9 +65,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.OutputBox.Location = new System.Drawing.Point(12, 56);
             this.OutputBox.Name = "OutputBox";
+            this.OutputBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
             this.OutputBox.Size = new System.Drawing.Size(511, 340);
             this.OutputBox.TabIndex = 1;
             this.OutputBox.Text = "";
+            this.OutputBox.TextChanged += new System.EventHandler(this.OutputBox_TextChanged);
             // 
             // FilePathBox
             // 
@@ -204,11 +210,45 @@
             this.SpawnpointComboBox.TabIndex = 10;
             this.SpawnpointComboBox.SelectedIndexChanged += new System.EventHandler(this.SpawnpointComboBox_SelectedIndexChanged);
             // 
+            // LightingOptionsGroupBox
+            // 
+            this.LightingOptionsGroupBox.Controls.Add(this.LightingTurnOffCheckBox);
+            this.LightingOptionsGroupBox.Controls.Add(this.LightingShadowsCheckBox);
+            this.LightingOptionsGroupBox.Location = new System.Drawing.Point(529, 306);
+            this.LightingOptionsGroupBox.Name = "LightingOptionsGroupBox";
+            this.LightingOptionsGroupBox.Size = new System.Drawing.Size(311, 73);
+            this.LightingOptionsGroupBox.TabIndex = 12;
+            this.LightingOptionsGroupBox.TabStop = false;
+            this.LightingOptionsGroupBox.Text = "Lighting Options";
+            // 
+            // LightingShadowsCheckBox
+            // 
+            this.LightingShadowsCheckBox.AutoSize = true;
+            this.LightingShadowsCheckBox.Checked = true;
+            this.LightingShadowsCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.LightingShadowsCheckBox.Location = new System.Drawing.Point(6, 21);
+            this.LightingShadowsCheckBox.Name = "LightingShadowsCheckBox";
+            this.LightingShadowsCheckBox.Size = new System.Drawing.Size(178, 21);
+            this.LightingShadowsCheckBox.TabIndex = 0;
+            this.LightingShadowsCheckBox.Text = "Disable shadow casting";
+            this.LightingShadowsCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // LightingTurnOffCheckBox
+            // 
+            this.LightingTurnOffCheckBox.AutoSize = true;
+            this.LightingTurnOffCheckBox.Location = new System.Drawing.Point(6, 48);
+            this.LightingTurnOffCheckBox.Name = "LightingTurnOffCheckBox";
+            this.LightingTurnOffCheckBox.Size = new System.Drawing.Size(117, 21);
+            this.LightingTurnOffCheckBox.TabIndex = 0;
+            this.LightingTurnOffCheckBox.Text = "Turn off lights";
+            this.LightingTurnOffCheckBox.UseVisualStyleBackColor = true;
+            // 
             // WreckForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(853, 407);
+            this.Controls.Add(this.LightingOptionsGroupBox);
             this.Controls.Add(this.RenameCheckBox);
             this.Controls.Add(this.SpawnpointComboBox);
             this.Controls.Add(this.DoorBehaviourComboBox);
@@ -226,6 +266,8 @@
             this.Name = "WreckForm";
             this.Text = "Sub Wrecker";
             this.Load += new System.EventHandler(this.WreckForm_Load);
+            this.LightingOptionsGroupBox.ResumeLayout(false);
+            this.LightingOptionsGroupBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -245,6 +287,9 @@
         private System.Windows.Forms.ComboBox DoorBehaviourComboBox;
         private System.Windows.Forms.CheckBox RenameCheckBox;
         private System.Windows.Forms.ComboBox SpawnpointComboBox;
+        private System.Windows.Forms.GroupBox LightingOptionsGroupBox;
+        private System.Windows.Forms.CheckBox LightingTurnOffCheckBox;
+        private System.Windows.Forms.CheckBox LightingShadowsCheckBox;
     }
 }
 

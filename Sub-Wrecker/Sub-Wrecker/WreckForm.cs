@@ -79,6 +79,8 @@ namespace Sub_Wrecker
                     deleteWires: DeleteWiresCheckBox.Checked,
                     doorBehaviour: DoorBehaviourComboBox.SelectedIndex,
                     inplace: InplaceCheckBox.Checked,
+                    lightingShadows: LightingShadowsCheckBox.Checked,
+                    lightingTurnOff: LightingTurnOffCheckBox.Checked,
                     preserveColour: PreserveColourCheckBox.Checked,
                     renameSub: RenameCheckBox.Checked,
                     spawnpointBehaviour: SpawnpointComboBox.SelectedIndex);
@@ -118,6 +120,7 @@ namespace Sub_Wrecker
         {
 
         }
+
         private void OutputBox_TextChanged(object sender, EventArgs e)
         {
             OutputBox.SelectionStart = OutputBox.Text.Length;

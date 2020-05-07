@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
+using System.Xml.XPath;
 
 namespace Sub_Wrecker
 {
@@ -13,11 +14,14 @@ namespace Sub_Wrecker
             // Set some values to 0 for statistics when finished.
             int wreckedItems = 0;
             int deletedComponents = 0;
-            int adjustedSpawnpoints = 0;
             int deletedWires = 0;
+            int adjustedSpawnpoints = 0;
             int adjustedDoors = 0;
             int adjustedContainerTags = 0;
+            int lightsShadow = 0;
+            int lightsTurnedOff = 0;
             string identifier;
+            string tags;
             string re;
             Console.WriteLine("Wrecking " + sub.Root.Attribute("name").Value.ToString() + "...");
             if (settings.RenameSub)
@@ -94,6 +98,24 @@ namespace Sub_Wrecker
                                 break;
                         }
                     }
+                    // Lighting options
+                    if (Data.Lights.Contains(identifier))
+                    {
+                        IEnumerable<XElement> LightComponents = xe.XPathSelectElements("LightComponent");
+                        foreach (XElement LightComponent in LightComponents)
+                        {
+                            if (settings.LightingShadows)
+                            {
+                                lightsShadow++;
+                                LightComponent.SetAttributeValue("CastShadows", "False");
+                            }
+                            if (settings.LightingTurnOff)
+                            {
+                                lightsTurnedOff++;
+                                LightComponent.SetAttributeValue("IsOn", "False");
+                            }
+                        }
+                    }
 
                 }
                 tags = xe.Attribute("tags") != null && settings.ContainerTags ? xe.Attribute("tags").Value : string.Empty;
@@ -154,7 +176,9 @@ namespace Sub_Wrecker
                 case 1:
                     Console.WriteLine("Turned " + adjustedSpawnpoints.ToString() + " spawnpoints into corpse spawnpoints.");
                     break;
-            }    
+            }
+            if (settings.LightingShadows) { Console.WriteLine("Turned off shadow casting on " + lightsShadow.ToString() + " lights."); }
+            if (settings.LightingTurnOff) { Console.WriteLine("Turned off " + lightsTurnedOff.ToString() + " off."); }
             Console.WriteLine("...wrecked.");
             return sub;
         }
