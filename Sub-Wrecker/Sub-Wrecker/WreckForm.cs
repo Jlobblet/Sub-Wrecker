@@ -118,6 +118,11 @@ namespace Sub_Wrecker
         {
 
         }
+        private void OutputBox_TextChanged(object sender, EventArgs e)
+        {
+            OutputBox.SelectionStart = OutputBox.Text.Length;
+            OutputBox.ScrollToCaret();
+        }
     }
 }
 
