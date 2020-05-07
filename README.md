@@ -20,6 +20,13 @@ Replaces the tags on containers with wrecked versions, e.g. `medcab` becomes `wr
 If checked, deletes all wires on the submarine.
 #### Delete components
 If checked, deletes all wiring components on the submarine.
+#### Spawnpoint behaviour dropdown
+##### Delete spawnpoints
+Delete all spawnpoints found.
+##### Replace spawnpoints with corpse spawnpoints
+Replace all spawnpoint types with corpse spawnpoints.
+##### Leave spawnpoints alone
+Do nothing to spawnpoints.
 #### Door behaviour dropdown
 ##### Replace door and hatch ids with wreck_id
 On all doors and hatches in the submarine, make them accessible with `wreck_id` as a `requireditem`.
@@ -29,3 +36,8 @@ On all doors and hatches in the submarine, set the value of `canbepicked` to `Fa
 Do nothing to hatches and doors.
 #### Wreck file inplace
 Instead of outputting to a new file, output to the same file as used for input.
+#### Lighting options
+##### Disable shadow casting
+On each light found, set `CastShadows` to `False`. Improves performance of the wreck.
+##### Turn off lights
+On each light found, set `IsOn` to `False`, disabling the light.
