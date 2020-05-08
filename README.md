@@ -5,7 +5,8 @@ Microsoft .NET Framework 4.7.2
 ## Installation
 1. Either build the project from source, or download a compressed executable from the latest release. The included .dll files must be within the same directory as the executable.
 ## Usage
-Run `Sub-Wrecker.exe`.
+Run `Sub-Wrecker.exe`.  
+![Sub-Wrecker](https://user-images.githubusercontent.com/37539527/81418259-52bad100-9144-11ea-9bbb-a988741ead9f.png)
 ### Browse
 Select one or more `.sub` files to wreck.
 ### Wreck
