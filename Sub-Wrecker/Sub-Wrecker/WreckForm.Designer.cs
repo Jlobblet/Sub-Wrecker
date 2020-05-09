@@ -42,8 +42,8 @@
             this.RenameCheckBox = new System.Windows.Forms.CheckBox();
             this.SpawnpointComboBox = new System.Windows.Forms.ComboBox();
             this.LightingOptionsGroupBox = new System.Windows.Forms.GroupBox();
-            this.LightingShadowsCheckBox = new System.Windows.Forms.CheckBox();
             this.LightingTurnOffCheckBox = new System.Windows.Forms.CheckBox();
+            this.LightingShadowsCheckBox = new System.Windows.Forms.CheckBox();
             this.LightingOptionsGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -212,6 +212,7 @@
             // 
             // LightingOptionsGroupBox
             // 
+            this.LightingOptionsGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.LightingOptionsGroupBox.Controls.Add(this.LightingTurnOffCheckBox);
             this.LightingOptionsGroupBox.Controls.Add(this.LightingShadowsCheckBox);
             this.LightingOptionsGroupBox.Location = new System.Drawing.Point(529, 306);
@@ -221,8 +222,20 @@
             this.LightingOptionsGroupBox.TabStop = false;
             this.LightingOptionsGroupBox.Text = "Lighting Options";
             // 
+            // LightingTurnOffCheckBox
+            // 
+            this.LightingTurnOffCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.LightingTurnOffCheckBox.AutoSize = true;
+            this.LightingTurnOffCheckBox.Location = new System.Drawing.Point(6, 48);
+            this.LightingTurnOffCheckBox.Name = "LightingTurnOffCheckBox";
+            this.LightingTurnOffCheckBox.Size = new System.Drawing.Size(117, 21);
+            this.LightingTurnOffCheckBox.TabIndex = 0;
+            this.LightingTurnOffCheckBox.Text = "Turn off lights";
+            this.LightingTurnOffCheckBox.UseVisualStyleBackColor = true;
+            // 
             // LightingShadowsCheckBox
             // 
+            this.LightingShadowsCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.LightingShadowsCheckBox.AutoSize = true;
             this.LightingShadowsCheckBox.Checked = true;
             this.LightingShadowsCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -232,16 +245,6 @@
             this.LightingShadowsCheckBox.TabIndex = 0;
             this.LightingShadowsCheckBox.Text = "Disable shadow casting";
             this.LightingShadowsCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // LightingTurnOffCheckBox
-            // 
-            this.LightingTurnOffCheckBox.AutoSize = true;
-            this.LightingTurnOffCheckBox.Location = new System.Drawing.Point(6, 48);
-            this.LightingTurnOffCheckBox.Name = "LightingTurnOffCheckBox";
-            this.LightingTurnOffCheckBox.Size = new System.Drawing.Size(117, 21);
-            this.LightingTurnOffCheckBox.TabIndex = 0;
-            this.LightingTurnOffCheckBox.Text = "Turn off lights";
-            this.LightingTurnOffCheckBox.UseVisualStyleBackColor = true;
             // 
             // WreckForm
             // 
