@@ -31,8 +31,8 @@ namespace Sub_Wrecker
             // Reversed so that deleted parent elements won't cause crashes when it should iterate over their children
             foreach (XElement xe in sub.Root.Descendants().Reverse())
             {
-                identifier = xe.Attribute("identifier") != null ? xe.Attribute("identifier").Value : string.Empty;
-                if (identifier != string.Empty)
+                identifier = xe.Attribute("identifier") != null ? xe.Attribute("identifier").Value : "";
+                if (identifier != "")
                 {
                     // Attempt to wreck an item based on its identifier
                     if (Data.Identifiers.ContainsKey(identifier))
@@ -118,8 +118,8 @@ namespace Sub_Wrecker
                     }
 
                 }
-                tags = xe.Attribute("tags") != null && settings.ContainerTags ? xe.Attribute("tags").Value : string.Empty;
-                if (tags != string.Empty)
+                tags = xe.Attribute("tags") != null && settings.ContainerTags ? xe.Attribute("tags").Value : "";
+                if (tags != "")
                 {
                     // Adjust tags on containers
                     foreach (KeyValuePair<string, string> kv in Data.ContainerTags)
