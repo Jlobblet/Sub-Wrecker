@@ -113,7 +113,7 @@
             this.ContainerTagsCheckBox.AutoSize = true;
             this.ContainerTagsCheckBox.Checked = true;
             this.ContainerTagsCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ContainerTagsCheckBox.Location = new System.Drawing.Point(536, 120);
+            this.ContainerTagsCheckBox.Location = new System.Drawing.Point(531, 120);
             this.ContainerTagsCheckBox.Margin = new System.Windows.Forms.Padding(5);
             this.ContainerTagsCheckBox.Name = "ContainerTagsCheckBox";
             this.ContainerTagsCheckBox.Size = new System.Drawing.Size(302, 21);
@@ -126,7 +126,7 @@
             // 
             this.InplaceCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.InplaceCheckBox.AutoSize = true;
-            this.InplaceCheckBox.Location = new System.Drawing.Point(535, 281);
+            this.InplaceCheckBox.Location = new System.Drawing.Point(531, 281);
             this.InplaceCheckBox.Margin = new System.Windows.Forms.Padding(5);
             this.InplaceCheckBox.Name = "InplaceCheckBox";
             this.InplaceCheckBox.Size = new System.Drawing.Size(141, 21);
@@ -139,7 +139,7 @@
             // 
             this.DeleteWiresCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.DeleteWiresCheckBox.AutoSize = true;
-            this.DeleteWiresCheckBox.Location = new System.Drawing.Point(535, 151);
+            this.DeleteWiresCheckBox.Location = new System.Drawing.Point(531, 151);
             this.DeleteWiresCheckBox.Margin = new System.Windows.Forms.Padding(5);
             this.DeleteWiresCheckBox.Name = "DeleteWiresCheckBox";
             this.DeleteWiresCheckBox.Size = new System.Drawing.Size(107, 21);
@@ -152,7 +152,7 @@
             // 
             this.DeleteComponentsCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.DeleteComponentsCheckBox.AutoSize = true;
-            this.DeleteComponentsCheckBox.Location = new System.Drawing.Point(535, 182);
+            this.DeleteComponentsCheckBox.Location = new System.Drawing.Point(531, 182);
             this.DeleteComponentsCheckBox.Margin = new System.Windows.Forms.Padding(5);
             this.DeleteComponentsCheckBox.Name = "DeleteComponentsCheckBox";
             this.DeleteComponentsCheckBox.Size = new System.Drawing.Size(152, 21);
@@ -183,7 +183,7 @@
             this.RenameCheckBox.AutoSize = true;
             this.RenameCheckBox.Checked = true;
             this.RenameCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.RenameCheckBox.Location = new System.Drawing.Point(535, 58);
+            this.RenameCheckBox.Location = new System.Drawing.Point(531, 58);
             this.RenameCheckBox.Margin = new System.Windows.Forms.Padding(5);
             this.RenameCheckBox.Name = "RenameCheckBox";
             this.RenameCheckBox.Size = new System.Drawing.Size(110, 21);
