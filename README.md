@@ -6,7 +6,7 @@ Microsoft .NET Framework 4.7.2
 1. Either build the project from source, or download a compressed executable from the latest release. The included .dll files must be within the same directory as the executable.
 ## Usage
 Run `Sub-Wrecker.exe`.  
-![Sub-Wrecker](Docs/gui.png)
+![Sub-Wrecker](Docs/GUI.png)
 ### Browse
 Select one or more `.sub` files to wreck.
 ### Wreck
