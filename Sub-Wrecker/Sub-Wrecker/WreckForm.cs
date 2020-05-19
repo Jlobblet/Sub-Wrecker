@@ -84,6 +84,7 @@ namespace Sub_Wrecker
                 XDocument sub = SaveUtils.LoadSub(fileName);
                 Console.WriteLine("...loaded.");
                 WreckerSettings settings = new WreckerSettings(
+                    conditionTo0: ConditionCheckBox.Checked,
                     containerTags: ContainerTagsCheckBox.Checked,
                     deleteComponents: DeleteComponentsCheckBox.Checked,
                     deleteWires: DeleteWiresCheckBox.Checked,

@@ -13,6 +13,7 @@ namespace Sub_Wrecker
         {
             // Set some values to 0 for statistics when finished.
             int wreckedItems = 0;
+            int conditionTo0Items = 0;
             int deletedComponents = 0;
             int deletedWires = 0;
             int adjustedSpawnpoints = 0;
@@ -116,6 +117,12 @@ namespace Sub_Wrecker
                             }
                         }
                     }
+                    // Set condition of some things to 0
+                    if (settings.ConditionTo0 && Data.Condition.Contains(identifier))
+                    {
+                        conditionTo0Items++;
+                        xe.Attribute("condition").SetValue(0);
+                    }
 
                 }
                 tags = xe.Attribute("tags") != null && settings.ContainerTags ? xe.Attribute("tags").Value : "";
@@ -164,6 +171,7 @@ namespace Sub_Wrecker
             }
             // Print out statistics
             Console.WriteLine("Wrecked " + wreckedItems.ToString() + " items.");
+            if (settings.ConditionTo0) { Console.WriteLine("Set the condition of " + conditionTo0Items + " items to 0."); }
             if (settings.DeleteComponents) { Console.WriteLine("Deleted " + deletedComponents.ToString() + " components."); }
             if (settings.DeleteWires) { Console.WriteLine("Deleted " + deletedWires.ToString() + " wires."); }
             if (settings.DoorBehaviour == 1 || settings.DoorBehaviour == 2) { Console.WriteLine("Adjusted " + adjustedDoors.ToString() + " doors."); }

@@ -44,6 +44,7 @@
             this.LightingOptionsGroupBox = new System.Windows.Forms.GroupBox();
             this.LightingTurnOffCheckBox = new System.Windows.Forms.CheckBox();
             this.LightingShadowsCheckBox = new System.Windows.Forms.CheckBox();
+            this.ConditionCheckBox = new System.Windows.Forms.CheckBox();
             this.LightingOptionsGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -66,7 +67,7 @@
             this.OutputBox.Location = new System.Drawing.Point(12, 56);
             this.OutputBox.Name = "OutputBox";
             this.OutputBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
-            this.OutputBox.Size = new System.Drawing.Size(511, 340);
+            this.OutputBox.Size = new System.Drawing.Size(511, 358);
             this.OutputBox.TabIndex = 1;
             this.OutputBox.Text = "";
             this.OutputBox.TextChanged += new System.EventHandler(this.OutputBox_TextChanged);
@@ -97,7 +98,7 @@
             this.PreserveColourCheckBox.AutoSize = true;
             this.PreserveColourCheckBox.Checked = true;
             this.PreserveColourCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.PreserveColourCheckBox.Location = new System.Drawing.Point(531, 89);
+            this.PreserveColourCheckBox.Location = new System.Drawing.Point(533, 120);
             this.PreserveColourCheckBox.Margin = new System.Windows.Forms.Padding(5);
             this.PreserveColourCheckBox.Name = "PreserveColourCheckBox";
             this.PreserveColourCheckBox.Size = new System.Drawing.Size(176, 21);
@@ -113,7 +114,7 @@
             this.ContainerTagsCheckBox.AutoSize = true;
             this.ContainerTagsCheckBox.Checked = true;
             this.ContainerTagsCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ContainerTagsCheckBox.Location = new System.Drawing.Point(531, 120);
+            this.ContainerTagsCheckBox.Location = new System.Drawing.Point(533, 151);
             this.ContainerTagsCheckBox.Margin = new System.Windows.Forms.Padding(5);
             this.ContainerTagsCheckBox.Name = "ContainerTagsCheckBox";
             this.ContainerTagsCheckBox.Size = new System.Drawing.Size(302, 21);
@@ -126,7 +127,7 @@
             // 
             this.InplaceCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.InplaceCheckBox.AutoSize = true;
-            this.InplaceCheckBox.Location = new System.Drawing.Point(531, 281);
+            this.InplaceCheckBox.Location = new System.Drawing.Point(533, 58);
             this.InplaceCheckBox.Margin = new System.Windows.Forms.Padding(5);
             this.InplaceCheckBox.Name = "InplaceCheckBox";
             this.InplaceCheckBox.Size = new System.Drawing.Size(141, 21);
@@ -139,7 +140,7 @@
             // 
             this.DeleteWiresCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.DeleteWiresCheckBox.AutoSize = true;
-            this.DeleteWiresCheckBox.Location = new System.Drawing.Point(531, 151);
+            this.DeleteWiresCheckBox.Location = new System.Drawing.Point(533, 213);
             this.DeleteWiresCheckBox.Margin = new System.Windows.Forms.Padding(5);
             this.DeleteWiresCheckBox.Name = "DeleteWiresCheckBox";
             this.DeleteWiresCheckBox.Size = new System.Drawing.Size(107, 21);
@@ -152,7 +153,7 @@
             // 
             this.DeleteComponentsCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.DeleteComponentsCheckBox.AutoSize = true;
-            this.DeleteComponentsCheckBox.Location = new System.Drawing.Point(531, 182);
+            this.DeleteComponentsCheckBox.Location = new System.Drawing.Point(533, 244);
             this.DeleteComponentsCheckBox.Margin = new System.Windows.Forms.Padding(5);
             this.DeleteComponentsCheckBox.Name = "DeleteComponentsCheckBox";
             this.DeleteComponentsCheckBox.Size = new System.Drawing.Size(152, 21);
@@ -171,7 +172,7 @@
             "Replace door and hatch ids with wreck_id",
             "Set canbepicked to False",
             "Leave doors and hatches alone"});
-            this.DoorBehaviourComboBox.Location = new System.Drawing.Point(529, 247);
+            this.DoorBehaviourComboBox.Location = new System.Drawing.Point(531, 309);
             this.DoorBehaviourComboBox.Margin = new System.Windows.Forms.Padding(5);
             this.DoorBehaviourComboBox.Name = "DoorBehaviourComboBox";
             this.DoorBehaviourComboBox.Size = new System.Drawing.Size(309, 24);
@@ -183,7 +184,7 @@
             this.RenameCheckBox.AutoSize = true;
             this.RenameCheckBox.Checked = true;
             this.RenameCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.RenameCheckBox.Location = new System.Drawing.Point(531, 58);
+            this.RenameCheckBox.Location = new System.Drawing.Point(533, 89);
             this.RenameCheckBox.Margin = new System.Windows.Forms.Padding(5);
             this.RenameCheckBox.Name = "RenameCheckBox";
             this.RenameCheckBox.Size = new System.Drawing.Size(110, 21);
@@ -202,7 +203,7 @@
             "Delete spawnpoints",
             "Replace spawnpoints with corpse spawnpoints",
             "Leave spawnpoints alone"});
-            this.SpawnpointComboBox.Location = new System.Drawing.Point(529, 213);
+            this.SpawnpointComboBox.Location = new System.Drawing.Point(531, 275);
             this.SpawnpointComboBox.Margin = new System.Windows.Forms.Padding(5);
             this.SpawnpointComboBox.MaxDropDownItems = 3;
             this.SpawnpointComboBox.Name = "SpawnpointComboBox";
@@ -215,7 +216,7 @@
             this.LightingOptionsGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.LightingOptionsGroupBox.Controls.Add(this.LightingTurnOffCheckBox);
             this.LightingOptionsGroupBox.Controls.Add(this.LightingShadowsCheckBox);
-            this.LightingOptionsGroupBox.Location = new System.Drawing.Point(529, 306);
+            this.LightingOptionsGroupBox.Location = new System.Drawing.Point(529, 341);
             this.LightingOptionsGroupBox.Name = "LightingOptionsGroupBox";
             this.LightingOptionsGroupBox.Size = new System.Drawing.Size(311, 73);
             this.LightingOptionsGroupBox.TabIndex = 12;
@@ -246,11 +247,27 @@
             this.LightingShadowsCheckBox.Text = "Disable shadow casting";
             this.LightingShadowsCheckBox.UseVisualStyleBackColor = true;
             // 
+            // ConditionCheckBox
+            // 
+            this.ConditionCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ConditionCheckBox.AutoSize = true;
+            this.ConditionCheckBox.Checked = true;
+            this.ConditionCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ConditionCheckBox.Location = new System.Drawing.Point(533, 182);
+            this.ConditionCheckBox.Margin = new System.Windows.Forms.Padding(5);
+            this.ConditionCheckBox.Name = "ConditionCheckBox";
+            this.ConditionCheckBox.Size = new System.Drawing.Size(186, 21);
+            this.ConditionCheckBox.TabIndex = 13;
+            this.ConditionCheckBox.Text = "Set pumps to 0 condition";
+            this.ConditionCheckBox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ConditionCheckBox.UseVisualStyleBackColor = true;
+            // 
             // WreckForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(853, 407);
+            this.ClientSize = new System.Drawing.Size(853, 423);
+            this.Controls.Add(this.ConditionCheckBox);
             this.Controls.Add(this.LightingOptionsGroupBox);
             this.Controls.Add(this.RenameCheckBox);
             this.Controls.Add(this.SpawnpointComboBox);
@@ -293,6 +310,7 @@
         private System.Windows.Forms.GroupBox LightingOptionsGroupBox;
         private System.Windows.Forms.CheckBox LightingTurnOffCheckBox;
         private System.Windows.Forms.CheckBox LightingShadowsCheckBox;
+        private System.Windows.Forms.CheckBox ConditionCheckBox;
     }
 }
 

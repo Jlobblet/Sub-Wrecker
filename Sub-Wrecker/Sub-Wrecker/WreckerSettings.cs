@@ -2,6 +2,7 @@
 {
     internal class WreckerSettings
     {
+        private bool conditionTo0;
         private bool containerTags;
         private bool deleteComponents;
         private bool deleteWires;
@@ -13,6 +14,7 @@
         private bool renameSub;
         private int spawnpointBehaviour;
 
+        public bool ConditionTo0 { get => conditionTo0; set => conditionTo0 = value; }
         public bool ContainerTags { get => containerTags; set => containerTags = value; }
         public bool DeleteComponents { get => deleteComponents; set => deleteComponents = value; }
         public bool DeleteWires { get => deleteWires; set => deleteWires = value; }
@@ -25,6 +27,7 @@
         public int SpawnpointBehaviour { get => spawnpointBehaviour; set => spawnpointBehaviour = value; }
 
         public WreckerSettings(
+            bool conditionTo0,
             bool containerTags,
             bool deleteComponents,
             bool deleteWires,
@@ -37,6 +40,7 @@
             int spawnpointBehaviour)
         {
 
+            ConditionTo0 = conditionTo0;
             ContainerTags = containerTags;
             DeleteComponents = deleteComponents;
             DeleteWires = deleteWires;
@@ -48,6 +52,7 @@
             RenameSub = renameSub;
             SpawnpointBehaviour = spawnpointBehaviour;
 
+            Properties.Settings.Default["ConditionTo0"] = conditionTo0;
             Properties.Settings.Default["ContainerTags"] = containerTags;
             Properties.Settings.Default["DeleteComponents"] = deleteComponents;
             Properties.Settings.Default["DeleteWires"] = deleteWires;

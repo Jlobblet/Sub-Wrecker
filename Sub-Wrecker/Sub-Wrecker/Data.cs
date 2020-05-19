@@ -41,11 +41,18 @@ namespace Sub_Wrecker
             .Select(XElement => XElement.Name.ToString())
             .ToList();
 
+        private readonly static List<string> condition = XElement
+            .Parse(File.ReadAllText("Resources/Condition.xml"))
+            .Descendants()
+            .Select(XElement => XElement.Name.ToString())
+            .ToList();
+
         public static Dictionary<string, string> ContainerTags { get => containerTags; }
         public static List<string> Doors { get => doors; }
         public static Dictionary<string, string> Identifiers { get => identifiers; }
         public static List<string> Lights { get => lights; }
         public static List<string> SignalComponents { get => signalComponents; }
         public static List<string> Wires { get => wires; }
+        public static List<string> Condition { get => condition; }
     }
 }
