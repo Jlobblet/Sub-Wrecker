@@ -31,7 +31,7 @@ namespace Sub_Wrecker
             // Reversed so that deleted parent elements won't cause crashes when it should iterate over their children
             foreach (XElement xe in sub.Root.Descendants().Reverse())
             {
-                identifier = xe.Attribute("identifier") != null ? xe.Attribute("identifier").Value : "";
+                identifier = xe.Attribute("identifier") != null ? xe.Attribute("identifier").Value.Replace(" ", "") : "";
                 if (identifier != "")
                 {
                     // Attempt to wreck an item based on its identifier
