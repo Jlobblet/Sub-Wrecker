@@ -3,7 +3,15 @@ Convert Barotrauma submarines to wrecks.
 ## Prerequisutes
 Microsoft .NET Framework 4.7.2
 ## Installation
-1. Either build the project from source, or download a compressed executable from the latest release. The included .dll files must be within the same directory as the executable.
+### Building from source
+*Recommended: Visual Studio 2019*
+1. Open `Sub-Wrecker.sln`
+2. Change the solution configuration to `Release`
+3. Build the solution
+### Downloading a pre-compiled executable
+1. Download either `Sub.Wrecker.zip` or `Sub.Wrecker.tar.xz` from [the latest release](https://github.com/Jlobblet/Sub-Wrecker/releases/latest). Both archives contain the same file - which you use is down to your preference.
+2. Extract the files to whatever location you choose.
+3. Run `Sub-Wrecker.exe`
 ## Usage
 Run `Sub-Wrecker.exe`.  
 ![Sub-Wrecker](Docs/GUI.png)
