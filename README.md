@@ -5,13 +5,14 @@ Microsoft .NET Framework 4.7.2
 ## Installation
 ### Building from source
 *Recommended: Visual Studio 2019*
-1. Open `Sub-Wrecker.sln`
-2. Change the solution configuration to `Release`
-3. Build the solution
+1. Open `Sub-Wrecker.sln`.
+2. Change the solution configuration to `Release`.
+3. Build the solution.
+4. Run `Sub-Wrecker.exe`.
 ### Downloading a pre-compiled executable
 1. Download either `Sub.Wrecker.zip` or `Sub.Wrecker.tar.xz` from [the latest release](https://github.com/Jlobblet/Sub-Wrecker/releases/latest). Both archives contain the same file - which you use is down to your preference.
 2. Extract the files to whatever location you choose.
-3. Run `Sub-Wrecker.exe`
+3. Run `Sub-Wrecker.exe`.
 ## Usage
 Run `Sub-Wrecker.exe`.  
 ![Sub-Wrecker](Docs/GUI.png)
