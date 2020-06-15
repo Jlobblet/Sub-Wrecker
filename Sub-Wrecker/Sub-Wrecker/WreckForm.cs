@@ -26,6 +26,7 @@ namespace Sub_Wrecker
             RenameCheckBox.Checked = (bool)Properties.Settings.Default["RenameSub"];
             SpawnpointComboBox.SelectedIndex = (int)Properties.Settings.Default["SpawnpointBehaviour"];
             Console.SetOut(new MultiTextWriter(new ControlWriter(OutputBox), Console.Out));
+            Console.Out.NewLine = "\n";
         }
 
         private void BrowseButton_Click(object sender, EventArgs e)
