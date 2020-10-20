@@ -17,18 +17,22 @@
 	<greatercomponent/>
 	<memorycomponent/>
 	<modulocomponent/>
+	<motiondetector/>
 	<multiplycomponent/>
 	<notcomponent/>
 	<orcomponent/>
+	<oxygendetector/>
 	<powcomponent/>
 	<regexcomponent/>
 	<relaycomponent/>
 	<roundcomponent/>
 	<signalcheckcomponent/>
 	<sincomponent/>
+	<smokedetector/>
 	<squarerootcomponent/>
 	<subtractcomponent/>
 	<tancomponent/>
+	<waterdetector/>
 	<wificomponent/>
 	<xorcomponent/>
 </root>
