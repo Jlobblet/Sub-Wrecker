@@ -4,27 +4,25 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
 using System.Xml.XPath;
+// ReSharper disable LocalizableElement
 
 namespace Sub_Wrecker
 {
-    internal class Wrecker
+    internal static class Wrecker
     {
-        public static XDocument Wreck_Sub(XDocument sub, WreckerSettings settings)
+        public static XDocument Wreck(this XDocument sub, WreckerSettings settings)
         {
-            // Set some values to 0 for statistics when finished.
-            int wreckedItems = 0;
-            int conditionTo0Items = 0;
-            int deletedComponents = 0;
-            int deletedWires = 0;
-            int adjustedSpawnpoints = 0;
-            int adjustedDoors = 0;
-            int adjustedContainerTags = 0;
-            int lightsShadow = 0;
-            int lightsTurnedOff = 0;
-            string identifier;
-            string tags;
-            string re;
-            Console.WriteLine("Wrecking " + sub.Root.Attribute("name").Value.ToString() + "...");
+            // Set some counters to 0 for statistics when finished.
+            int wreckedItems = 0,
+                conditionTo0Items = 0,
+                deletedComponents = 0,
+                deletedWires = 0,
+                adjustedSpawnpoints = 0,
+                adjustedDoors = 0,
+                adjustedContainerTags = 0,
+                lightsShadow = 0,
+                lightsTurnedOff = 0;
+            Console.WriteLine($"Wrecking {sub.Root.Attribute("name").Value}...");
             if (settings.RenameSub)
             {
                 sub.Root.Attribute("name").Value += "_Wrecked";
@@ -32,7 +30,8 @@ namespace Sub_Wrecker
             // Reversed so that deleted parent elements won't cause crashes when it should iterate over their children
             foreach (XElement xe in sub.Root.Descendants().Reverse())
             {
-                identifier = xe.Attribute("identifier") != null ? xe.Attribute("identifier").Value.Replace(" ", "") : "";
+                string identifier = xe.Attribute("identifier") != null ? xe.Attribute("identifier").Value.Replace(" ", "") : "";
+                string re;
                 if (identifier != "")
                 {
                     // Attempt to wreck an item based on its identifier
@@ -73,14 +72,10 @@ namespace Sub_Wrecker
                                 foreach (XElement cxe in xe.Descendants())
                                 {
                                     if (cxe.Attribute("items") == null || cxe.Name.ToString() != "requireditem") { continue; }
-                                    re = @"(?:(?<=,)|^)"
-                                            + @"id(card|_(assistant|captain|engineer|mechanic|medic|security))"
-                                            + @"(?:(?=,)|$)";
-                                    if (Regex.IsMatch(cxe.Attribute("items").Value, re))
-                                    {
-                                        adjustedDoors++;
-                                        cxe.SetAttributeValue("items", Regex.Replace(cxe.Attribute("items").Value, re, "wreck_id", RegexOptions.IgnoreCase));
-                                    }
+                                    re = @"(?:(?<=,)|^)id(card|_(assistant|captain|engineer|mechanic|medic|security))(?:(?=,)|$)";
+                                    if (!Regex.IsMatch(cxe.Attribute("items").Value, re)) continue;
+                                    adjustedDoors++;
+                                    cxe.SetAttributeValue("items", Regex.Replace(cxe.Attribute("items").Value, re, "wreck_id", RegexOptions.IgnoreCase));
                                 }
                                 break;
                             //Set canbepicked to False
@@ -95,25 +90,23 @@ namespace Sub_Wrecker
                             //Leave doors and hatches alone
                             case 2:
                                 break;
-                            default:
-                                break;
                         }
                     }
                     // Lighting options
                     if (Data.Lights.Contains(identifier))
                     {
-                        IEnumerable<XElement> LightComponents = xe.XPathSelectElements("LightComponent");
-                        foreach (XElement LightComponent in LightComponents)
+                        IEnumerable<XElement> lightComponents = xe.XPathSelectElements("LightComponent");
+                        foreach (XElement lightComponent in lightComponents)
                         {
                             if (settings.LightingShadows)
                             {
                                 lightsShadow++;
-                                LightComponent.SetAttributeValue("CastShadows", "False");
+                                lightComponent.SetAttributeValue("CastShadows", "False");
                             }
                             if (settings.LightingTurnOff)
                             {
                                 lightsTurnedOff++;
-                                LightComponent.SetAttributeValue("IsOn", "False");
+                                lightComponent.SetAttributeValue("IsOn", "False");
                             }
                         }
                     }
@@ -125,68 +118,61 @@ namespace Sub_Wrecker
                     }
 
                 }
-                tags = xe.Attribute("tags") != null && settings.ContainerTags ? xe.Attribute("tags").Value : "";
+                string tags = xe.Attribute("tags") != null && settings.ContainerTags ? xe.Attribute("tags").Value : "";
                 if (tags != "")
                 {
                     // Adjust tags on containers
                     foreach (KeyValuePair<string, string> kv in Data.ContainerTags)
                     {
-                        re = @"(?:(?<=,)|^)" + kv.Key + @"(?:(?=,)|$)";
-                        if (Regex.IsMatch(tags, re))
-                        {
-                            adjustedContainerTags++;
-                            tags = Regex.Replace(tags, re, kv.Value, RegexOptions.IgnoreCase);
-                        }
+                        re = $@"(?:(?<=,)|^){kv.Key}(?:(?=,)|$)";
+                        if (!Regex.IsMatch(tags, re)) continue;
+                        adjustedContainerTags++;
+                        tags = Regex.Replace(tags, re, kv.Value, RegexOptions.IgnoreCase);
                     }
                     xe.SetAttributeValue("tags", tags);
 
                 }
-                if (xe.Name.ToString().ToLower() == "waypoint")
+
+                if (xe.Name.ToString().ToLower() != "waypoint") continue;
+                if (xe.Attribute("spawn") == null) continue;
+                if (xe.Attribute("spawn").Value.ToLower() != "path")
                 {
-                    if (xe.Attribute("spawn") != null)
+                    switch (settings.SpawnpointBehaviour)
                     {
-                        if (xe.Attribute("spawn").Value.ToString().ToLower() != "path")
-                        {
-                            switch (settings.SpawnpointBehaviour)
-                            {
-                                // Delete spawnpoints
-                                case 0:
-                                    adjustedSpawnpoints++;
-                                    xe.Remove();
-                                    break;
-                                // Turn into corpse spawnpoint
-                                case 1:
-                                    adjustedSpawnpoints++;
-                                    xe.SetAttributeValue("spawn", "corpse");
-                                    break;
-                                // Leave it alone
-                                case 2:
-                                    break;
-                                default:
-                                    break;
-                            }
-                        }
+                        // Delete spawnpoints
+                        case 0:
+                            adjustedSpawnpoints++;
+                            xe.Remove();
+                            break;
+                        // Turn into corpse spawnpoint
+                        case 1:
+                            adjustedSpawnpoints++;
+                            xe.SetAttributeValue("spawn", "corpse");
+                            break;
+                        // Leave it alone
+                        case 2:
+                            break;
                     }
                 }
             }
             // Print out statistics
-            Console.WriteLine("Wrecked " + wreckedItems.ToString() + " items.");
-            if (settings.ConditionTo0) { Console.WriteLine("Set the condition of " + conditionTo0Items + " items to 0."); }
-            if (settings.DeleteComponents) { Console.WriteLine("Deleted " + deletedComponents.ToString() + " components."); }
-            if (settings.DeleteWires) { Console.WriteLine("Deleted " + deletedWires.ToString() + " wires."); }
-            if (settings.DoorBehaviour == 1 || settings.DoorBehaviour == 2) { Console.WriteLine("Adjusted " + adjustedDoors.ToString() + " doors."); }
-            if (settings.ContainerTags) { Console.WriteLine("Adjusted " + adjustedContainerTags.ToString() + " tags on containers."); }
+            Console.WriteLine($"Wrecked {wreckedItems} items.");
+            if (settings.ConditionTo0) { Console.WriteLine($"Set the condition of {conditionTo0Items} items to 0."); }
+            if (settings.DeleteComponents) { Console.WriteLine($"Deleted {deletedComponents} components."); }
+            if (settings.DeleteWires) { Console.WriteLine($"Deleted {deletedWires} wires."); }
+            if (settings.DoorBehaviour == 1 || settings.DoorBehaviour == 2) { Console.WriteLine($"Adjusted {adjustedDoors} doors."); }
+            if (settings.ContainerTags) { Console.WriteLine($"Adjusted {adjustedContainerTags} tags on containers."); }
             switch (settings.SpawnpointBehaviour)
             {
                 case 0:
-                    Console.WriteLine("Deleted " + adjustedSpawnpoints.ToString() + " spawnpoints.");
+                    Console.WriteLine($"Deleted {adjustedSpawnpoints} spawnpoints.");
                     break;
                 case 1:
-                    Console.WriteLine("Turned " + adjustedSpawnpoints.ToString() + " spawnpoints into corpse spawnpoints.");
+                    Console.WriteLine($"Turned {adjustedSpawnpoints} spawnpoints into corpse spawnpoints.");
                     break;
             }
-            if (settings.LightingShadows) { Console.WriteLine("Turned off shadow casting on " + lightsShadow.ToString() + " lights."); }
-            if (settings.LightingTurnOff) { Console.WriteLine("Turned off " + lightsTurnedOff.ToString() + " off."); }
+            if (settings.LightingShadows) { Console.WriteLine($"Turned off shadow casting on {lightsShadow} lights."); }
+            if (settings.LightingTurnOff) { Console.WriteLine($"Turned off {lightsTurnedOff} off."); }
             Console.WriteLine("...wrecked.");
             return sub;
         }

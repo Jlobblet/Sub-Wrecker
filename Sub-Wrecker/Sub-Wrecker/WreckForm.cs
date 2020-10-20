@@ -95,7 +95,7 @@ namespace Sub_Wrecker
                 Console.WriteLine($"Loading {fileName}...");
                 XDocument sub = IoUtil.LoadSub(fileName);
                 Console.WriteLine("...loaded.");
-                XDocument wreckedSub = Wrecker.Wreck_Sub(sub, settings);
+                XDocument wreckedSub = sub.Wreck(settings);
                 string outFileName = InplaceCheckBox.Checked ? fileName : Path.Combine(Path.GetDirectoryName(fileName) ?? "",
                                          $"{Path.GetFileNameWithoutExtension(fileName)}_Wrecked.sub");
                 Console.WriteLine($"Saving to {outFileName}...");
