@@ -106,7 +106,6 @@
             this.PreserveColourCheckBox.Text = "Preserve sprite colours";
             this.PreserveColourCheckBox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.PreserveColourCheckBox.UseVisualStyleBackColor = true;
-            this.PreserveColourCheckBox.CheckedChanged += new System.EventHandler(this.SpriteColourCheckBox_CheckedChanged);
             // 
             // ContainerTagsCheckBox
             // 

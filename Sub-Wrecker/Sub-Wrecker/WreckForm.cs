@@ -112,20 +112,10 @@ namespace Sub_Wrecker
             }
         }
 
-        private void SpriteColourCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void WreckForm_Load(object sender, EventArgs e)
         {
             DoorBehaviourComboBox.SelectedIndex = 0;
             SpawnpointComboBox.SelectedIndex = 0;
-        }
-
-        private void DeleteSpawnpointsCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void SpawnpointComboBox_SelectedIndexChanged(object sender, EventArgs e)
