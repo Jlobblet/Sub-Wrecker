@@ -1,30 +1,18 @@
 ﻿namespace Sub_Wrecker
 {
-    internal class WreckerSettings
+    internal readonly struct WreckerSettings
     {
-        private bool conditionTo0;
-        private bool containerTags;
-        private bool deleteComponents;
-        private bool deleteWires;
-        private int doorBehaviour;
-        private bool inplace;
-        private bool lightingShadows;
-        private bool lightingTurnOff;
-        private bool preserveColour;
-        private bool renameSub;
-        private int spawnpointBehaviour;
-
-        public bool ConditionTo0 { get => conditionTo0; set => conditionTo0 = value; }
-        public bool ContainerTags { get => containerTags; set => containerTags = value; }
-        public bool DeleteComponents { get => deleteComponents; set => deleteComponents = value; }
-        public bool DeleteWires { get => deleteWires; set => deleteWires = value; }
-        public int DoorBehaviour { get => doorBehaviour; set => doorBehaviour = value; }
-        public bool Inplace { get => inplace; set => inplace = value; }
-        public bool LightingShadows { get => lightingShadows; set => lightingShadows = value; }
-        public bool LightingTurnOff { get => lightingTurnOff; set => lightingTurnOff = value; }
-        public bool PreserveColour { get => preserveColour; set => preserveColour = value; }
-        public bool RenameSub { get => renameSub; set => renameSub = value; }
-        public int SpawnpointBehaviour { get => spawnpointBehaviour; set => spawnpointBehaviour = value; }
+        public bool ConditionTo0 { get; }
+        public bool ContainerTags { get; }
+        public bool DeleteComponents { get; }
+        public bool DeleteWires { get; }
+        public int DoorBehaviour { get; }
+        public bool Inplace { get; }
+        public bool LightingShadows { get; }
+        public bool LightingTurnOff { get; }
+        public bool PreserveColour { get; }
+        public bool RenameSub { get; }
+        public int SpawnpointBehaviour { get; }
 
         public WreckerSettings(
             bool conditionTo0,
@@ -52,17 +40,22 @@
             RenameSub = renameSub;
             SpawnpointBehaviour = spawnpointBehaviour;
 
-            Properties.Settings.Default["ConditionTo0"] = conditionTo0;
-            Properties.Settings.Default["ContainerTags"] = containerTags;
-            Properties.Settings.Default["DeleteComponents"] = deleteComponents;
-            Properties.Settings.Default["DeleteWires"] = deleteWires;
-            Properties.Settings.Default["DoorBehaviour"] = doorBehaviour;
-            Properties.Settings.Default["Inplace"] = inplace;
-            Properties.Settings.Default["LightingShadows"] = lightingShadows;
-            Properties.Settings.Default["LightingTurnOff"] = lightingTurnOff;
-            Properties.Settings.Default["PreserveColour"] = preserveColour;
-            Properties.Settings.Default["RenameSub"] = renameSub;
-            Properties.Settings.Default["SpawnpointBehaviour"] = spawnpointBehaviour;
+            SaveDefaultSettings(this);
+        }
+
+        private static void SaveDefaultSettings(WreckerSettings settings)
+        {
+            Properties.Settings.Default["ConditionTo0"] = settings.ConditionTo0;
+            Properties.Settings.Default["ContainerTags"] = settings.ContainerTags;
+            Properties.Settings.Default["DeleteComponents"] = settings.DeleteComponents;
+            Properties.Settings.Default["DeleteWires"] = settings.DeleteWires;
+            Properties.Settings.Default["DoorBehaviour"] = settings.DoorBehaviour;
+            Properties.Settings.Default["Inplace"] = settings.Inplace;
+            Properties.Settings.Default["LightingShadows"] = settings.LightingShadows;
+            Properties.Settings.Default["LightingTurnOff"] = settings.LightingTurnOff;
+            Properties.Settings.Default["PreserveColour"] = settings.PreserveColour;
+            Properties.Settings.Default["RenameSub"] = settings.RenameSub;
+            Properties.Settings.Default["SpawnpointBehaviour"] = settings.SpawnpointBehaviour;
             Properties.Settings.Default.Save();
         }
     }
